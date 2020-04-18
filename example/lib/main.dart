@@ -8,7 +8,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BannerBackend(
+    return BannerService(
       child: MaterialApp(
         routes: {
           '/': (_) => FirstPage(),
