@@ -1,16 +1,16 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/widgets.dart';
 
-class BannerBackend extends StatefulWidget {
-  BannerBackend({Key key, this.child}) : assert(child != null);
+class BannerService extends StatefulWidget {
+  BannerService({Key key, this.child}) : assert(child != null);
 
   final Widget child;
 
   @override
-  BannerBackendState createState() => BannerBackendState();
+  BannerServiceState createState() => BannerServiceState();
 }
 
-class BannerBackendState extends State<BannerBackend> {
+class BannerServiceState extends State<BannerService> {
   final _banners = <Key, Widget>{};
 
   void _add(Widget banner) {
@@ -27,7 +27,7 @@ class BannerBackendState extends State<BannerBackend> {
 
   @override
   Widget build(BuildContext context) {
-    return BannerService(
+    return BannerState(
       banners: _banners.values.toList(),
       add: _add,
       remove: _remove,
@@ -36,8 +36,8 @@ class BannerBackendState extends State<BannerBackend> {
   }
 }
 
-class BannerService extends InheritedWidget {
-  BannerService({
+class BannerState extends InheritedWidget {
+  BannerState({
     @required this.banners,
     @required this.add,
     @required this.remove,
@@ -49,13 +49,13 @@ class BannerService extends InheritedWidget {
   final void Function(Widget banner) remove;
 
   @override
-  bool updateShouldNotify(BannerService oldWidget) =>
+  bool updateShouldNotify(BannerState oldWidget) =>
       !DeepCollectionEquality().equals(banners, oldWidget.banners);
 }
 
-extension GetBannerService on BuildContext {
-  BannerService get banners =>
-      dependOnInheritedWidgetOfExactType<BannerService>() ??
+extension GetBannerState on BuildContext {
+  BannerState get banners =>
+      dependOnInheritedWidgetOfExactType<BannerState>() ??
       (throw Exception(
           "It seems like no BannerService exists above the context that you "
           "called context.banners on. You should probably wrap your app in a "
