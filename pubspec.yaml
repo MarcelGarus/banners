@@ -1,0 +1,10 @@
+name: banners
+description: Package for dynamically displaying global banners at the top of the screen.
+
+environment:
+  sdk: ">=2.6.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  collection: ^1.14.12
