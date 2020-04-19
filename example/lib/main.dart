@@ -8,70 +8,51 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BannerService(
-      child: MaterialApp(
-        routes: {
-          '/': (_) => FirstPage(),
-          '/second': (_) => SecondPage(),
-        },
-      ),
+    return MaterialApp(
+      home: ThePage(),
     );
   }
 }
 
-class FirstPage extends StatelessWidget {
+class ThePage extends StatefulWidget {
+  @override
+  _ThePageState createState() => _ThePageState();
+}
+
+class _ThePageState extends State<ThePage> {
+  final _banners = <Widget>[];
+
   @override
   Widget build(BuildContext context) {
-    return Banners(
+    return Bannered(
+      banners: _banners,
       child: Scaffold(
         appBar: AppBar(title: Text('First page')),
-        body: Buttons(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.of(context).pushNamed('/second'),
-          child: Icon(Icons.beach_access),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              RaisedButton(
+                onPressed: () => setState(() => _banners.add(DemoBanner())),
+                child: Text('Sign in as demo'),
+              ),
+              RaisedButton(
+                onPressed: () => setState(() => _banners.remove(DemoBanner())),
+                child: Text('Sign out from demo'),
+              ),
+              RaisedButton(
+                onPressed: () => setState(() => _banners.add(OfflineBanner())),
+                child: Text('Go offline'),
+              ),
+              RaisedButton(
+                onPressed: () =>
+                    setState(() => _banners.remove(OfflineBanner())),
+                child: Text('Go online'),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Banners(
-      child: Scaffold(
-        appBar: AppBar(title: Text('Second page')),
-        body: Buttons(),
-      ),
-    );
-  }
-}
-
-class Buttons extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          RaisedButton(
-            onPressed: () => context.banners.add(DemoBanner()),
-            child: Text('Sign in as demo'),
-          ),
-          RaisedButton(
-            onPressed: () => context.banners.remove(DemoBanner()),
-            child: Text('Sign out from demo'),
-          ),
-          RaisedButton(
-            onPressed: () => context.banners.add(OfflineBanner()),
-            child: Text('Go offline'),
-          ),
-          RaisedButton(
-            onPressed: () => context.banners.remove(OfflineBanner()),
-            child: Text('Go online'),
-          ),
-        ],
       ),
     );
   }

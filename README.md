@@ -3,25 +3,9 @@ This package offers this functionality.
 
 ## How to use
 
-### 1. Wrap your existing app inside a `BannerService`
+### Create banners
 
-```dart
-return BannerService(
-  child: MaterialApp(...),
-);
-```
-
-### 2. Wrap each screen in a `Banners` widget
-
-```dart
-return Banners(
-  child: Scaffold(...),
-);
-```
-
-### 3. Create some banners
-
-Any widgets with a key can be banners.
+Create some banner `Widget`s.
 Use the `BannerScaffold` for automatically setting a color and respecting the status bar padding.
 
 ```dart
@@ -42,21 +26,15 @@ class DemoBanner extends StatelessWidget {
 }
 ```
 
-The same banner cannot be displayed twice, e.g. there can only exist one banner with the `ValueKey('demo')` key at a time.
+### Use banners
 
-### 4. Use banners
-
-Anywhere in your app, call `context.banners.add(DemoBanner())` to show a banner.
-Similarly, you can call `context.banners.remove(DemoBanner())` to remove the banner.
+Wrap a widget with `Bannered` and provide the banner widgets. The `MediaQuery`'s `padding` will be adjusted correctly.
 
 ```dart
-Future<void> loginAsDemo(BuildContext context) async {
-  await login(username: 'demo', password: 'demo');
-  context.banners.add(DemoBanner());
-}
-
-Future<void> logout(BuildContext context) {
-  context.banners.remove(DemoBanner()); // If no DemoBanner exists, nothing happens.
-  ...
-}
+return Bannered(
+  banners: [
+    // Some banner widgets.
+  ],
+  child: Scaffold(...),
+);
 ```

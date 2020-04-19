@@ -1,3 +1,2 @@
-export 'src/banners.dart' show Banners;
-export 'src/service.dart' show BannerService, GetBannerState;
+export 'src/banners.dart' show Bannered;
 export 'src/scaffold.dart';
