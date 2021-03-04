@@ -1,2 +1,2 @@
-export 'src/banners.dart' show Bannered;
+export 'src/bannered.dart';
 export 'src/scaffold.dart';

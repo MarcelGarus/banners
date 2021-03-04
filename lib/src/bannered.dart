@@ -5,9 +5,9 @@ const _childKey = ValueKey('child');
 
 class Bannered extends StatelessWidget {
   const Bannered({
-    Key key,
-    @required this.banners,
-    @required this.child,
+    Key? key,
+    required this.banners,
+    required this.child,
   }) : super(key: key);
 
   final List<Widget> banners;
