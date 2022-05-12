@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class BannerScaffold extends StatelessWidget {
   const BannerScaffold({
-    Key? key,
+    super.key,
     required this.backgroundColor,
     required this.body,
-  }) : super(key: key);
+  });
 
   final Color backgroundColor;
   final Widget body;

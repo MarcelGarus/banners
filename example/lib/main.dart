@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:banners/banners.dart';
+import 'package:flutter/material.dart';
 
 import 'banners.dart';
 
@@ -7,16 +7,12 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ThePage(),
-    );
-  }
+  Widget build(BuildContext _) => MaterialApp(home: ThePage());
 }
 
 class ThePage extends StatefulWidget {
   @override
-  _ThePageState createState() => _ThePageState();
+  State<ThePage> createState() => _ThePageState();
 }
 
 class _ThePageState extends State<ThePage> {
@@ -33,19 +29,19 @@ class _ThePageState extends State<ThePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => setState(() => _banners.add(DemoBanner())),
                 child: Text('Sign in as demo'),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => setState(() => _banners.remove(DemoBanner())),
                 child: Text('Sign out from demo'),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => setState(() => _banners.add(OfflineBanner())),
                 child: Text('Go offline'),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () =>
                     setState(() => _banners.remove(OfflineBanner())),
                 child: Text('Go online'),

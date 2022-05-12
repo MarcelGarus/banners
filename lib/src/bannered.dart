@@ -5,17 +5,17 @@ const _childKey = ValueKey('child');
 
 class Bannered extends StatelessWidget {
   const Bannered({
-    Key? key,
+    super.key,
     required this.banners,
     required this.child,
-  }) : super(key: key);
+  });
 
   final List<Widget> banners;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         children: <Widget>[
